@@ -60,12 +60,12 @@ def fetch_and_update():
         records_to_upload = new_or_updated_records.to_dict(orient='records')
 
         # Apply the function to each record in records_payload
-        records_payload_sanitized = [replace_invalid_json_values(record) for record in records_to_upload]
+            records_payload_sanitized = [replace_invalid_json_values(record) for record in records_to_upload]
 
         # Update records in AITable
         # Note: Adjusted to match the AITable API documentation
         logging.info(f"Updating {len(records_payload_sanitized)} records in AITable.")
-        response = requests.patch(
+            response = requests.patch(
             f'https://aitable.ai/fusion/v1/datasheets/{datasheet_id}/records',
             headers={
                 'Authorization': f'Bearer {access_token}',
