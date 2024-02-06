@@ -75,8 +75,10 @@ def fetch_and_update():
 
         if response.status_code == 200:
             logging.info("Records updated successfully")
+            logging.info(f"Response data: {response.json()}")
         else:
             logging.error(f"Failed to update records: {response.text}")
+            logging.error(f"Response data: {response.json()}")
 
         # Store the current dataset for the next fetch
         df.to_csv('latest_dataset.csv', index=False)
@@ -88,9 +90,9 @@ def fetch_and_update():
 logging.info("Initializing the scheduler.")
 scheduler = BlockingScheduler()
 
-# Schedule the job to run every 2 minutes
-logging.info("Scheduling the job to run every 2 minutes.")
-scheduler.add_job(fetch_and_update, 'interval', minutes=2)
+# Schedule the job to run every 10 minutes
+logging.info("Scheduling the job to run every 10 minutes.")
+scheduler.add_job(fetch_and_update, 'interval', minutes=10)
 
 # Start the scheduler
 logging.info("Starting the scheduler.")
