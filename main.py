@@ -36,6 +36,11 @@ def fetch_and_update():
         except FileNotFoundError:
             last_df = pd.DataFrame()
 
+        # Check if 'Type' column exists
+        if 'Type' not in df.columns:
+            logging.error("'Type' column is missing from the fetched CSV data.")
+            return
+
         # Identify new and updated "Open position" records
         logging.info("Identifying new and updated 'Open position' records.")
         if not last_df.empty:
