@@ -9,12 +9,19 @@ import numpy as np
 # Set up logging
 logging.basicConfig(filename='update_log.log', level=logging.INFO, format='%(asctime)s %(message)s')
 
+logging.info("Starting the update process.")
+
 # Function to fetch and process CSV data
 def fetch_and_update():
     try:
+        logging.info("Attempting to fetch CSV data from the URL.")
         # Fetch and load the CSV data into a DataFrame
         response = requests.get(csv_url)
+        if response.status_code != 200:
+            logging.error(f"Failed to fetch CSV data. Status code: {response.status_code}")
+            return
         df = pd.read_csv(io.StringIO(response.text), skiprows=1, low_memory=False)
+        logging.info("CSV data fetched successfully.")
 
         # Preprocessing steps (placeholder values replacement, data type conversion, etc.)
         # ...
@@ -26,6 +33,7 @@ def fetch_and_update():
             last_df = pd.DataFrame()
 
         # Identify new and updated "Open position" records
+        logging.info("Identifying new and updated 'Open position' records.")
         if not last_df.empty:
             # Merge on 'Ticket' to find differences
             merged_df = pd.merge(df, last_df, on='Ticket', how='outer', indicator=True)
@@ -44,6 +52,7 @@ def fetch_and_update():
 
         # Update records in AITable
         # Note: Adjusted to match the AITable API documentation
+        logging.info(f"Updating {len(records_payload_sanitized)} records in AITable.")
         response = requests.patch(
             f'https://aitable.ai/fusion/v1/datasheets/{datasheet_id}/records',
             headers={
@@ -60,16 +69,20 @@ def fetch_and_update():
 
         # Store the current dataset for the next fetch
         df.to_csv('latest_dataset.csv', index=False)
+        logging.info("The current dataset has been stored for the next fetch.")
     except Exception as e:
         logging.error(f"An error occurred: {e}")
 
 # Initialize the scheduler
+logging.info("Initializing the scheduler.")
 scheduler = BlockingScheduler()
 
 # Schedule the job to run every 2 minutes
+logging.info("Scheduling the job to run every 2 minutes.")
 scheduler.add_job(fetch_and_update, 'interval', minutes=2)
 
 # Start the scheduler
+logging.info("Starting the scheduler.")
 scheduler.start()
 # Provided values
 access_token = 'uskr7IEUFGLArGCDjxjBmPH'
