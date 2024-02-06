@@ -22,6 +22,9 @@ def fetch_and_update():
         logging.info("Attempting to fetch CSV data from the URL.")
         # Fetch and load the CSV data into a DataFrame
         df = fetch_csv_data(csv_url)
+        if df.empty:
+            logging.warning("Fetched CSV data is empty. No data to process.")
+            return
         logging.info("CSV data fetched successfully.")
 
         # Preprocessing steps (placeholder values replacement, data type conversion, etc.)
@@ -45,12 +48,15 @@ def fetch_and_update():
         if not last_df.empty:
             # Merge on 'Ticket' to find differences
             merged_df = pd.merge(df, last_df, on='Ticket', how='outer', indicator=True)
+            logging.info(f"Merged DataFrame shape: {merged_df.shape}")
             # New or updated records
             new_or_updated_records = merged_df[merged_df['_merge'] != 'right_only']
             # Filter for "Open position" or newly "Closed position"
             new_or_updated_records = new_or_updated_records[(new_or_updated_records['Type'] == 'Open position') | ((new_or_updated_records['Type'] == 'Closed position') & (merged_df['_merge'] == 'left_only'))]
+            logging.info(f"New or updated 'Open position' records count: {new_or_updated_records.shape[0]}")
         else:
             new_or_updated_records = df[df['Type'] == 'Open position']
+            logging.info(f"New 'Open position' records count: {new_or_updated_records.shape[0]}")
 
         # Convert the new or updated records to a list of dictionaries for the API
         records_to_upload = new_or_updated_records.to_dict(orient='records')
@@ -69,6 +75,14 @@ def fetch_and_update():
             },
             json={'records': records_payload_sanitized}
         )
+
+        if response.status_code != 200:
+            logging.error(f"Failed to update records: {response.text}")
+            logging.error(f"Response status code: {response.status_code}")
+            logging.error(f"Response data: {response.json()}")
+        else:
+            logging.info("Records updated successfully in AITable.")
+            logging.info(f"Response data: {response.json()}")
 
         if response.status_code == 200:
             logging.info("Records updated successfully")
