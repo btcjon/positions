@@ -88,8 +88,6 @@ def fetch_and_update():
         logging.error(f"An error occurred: {e}")
     finally:
         logging.info("fetch_and_update job completed.")
-    except Exception as e:
-        logging.error(f"An error occurred: {e}")
 
 # Initialize the scheduler
 logging.info("Initializing the scheduler.")
