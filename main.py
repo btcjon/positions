@@ -9,6 +9,10 @@ import numpy as np
 # Set up logging
 logging.basicConfig(filename='update_log.log', level=logging.INFO, format='%(asctime)s %(message)s')
 
+csv_url = 'https://www.fxblue.com/users/compoundit/csv'
+access_token = 'uskr7IEUFGLArGCDjxjBmPH'
+datasheet_id = 'dstTbH8nkfwx8qsfV0'
+
 logging.info("Starting the update process.")
 
 # Function to fetch and process CSV data
@@ -91,19 +95,6 @@ csv_url = 'https://www.fxblue.com/users/compoundit/csv'
 
 # Initialize the Apitable client with your access token
 apitable = Apitable(access_token)
-
-# Fetch and load the CSV data into a DataFrame
-response = requests.get(csv_url)
-df = pd.read_csv(io.StringIO(response.text), skiprows=1, low_memory=False)
-
-# Preprocessing steps (placeholder values replacement, data type conversion, etc.)
-# ...
-
-# Load the last fetched dataset
-try:
-    last_df = pd.read_csv('latest_dataset.csv')
-except FileNotFoundError:
-    last_df = pd.DataFrame()
 
 # Identify new and updated "Open position" records
 if not last_df.empty:
