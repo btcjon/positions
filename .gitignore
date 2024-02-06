@@ -1,0 +1,11 @@
+autogen*
+*autogen*
+*agstudio*
+agstudio*
+.env
+oai_config_list.json
+.aider*
+*scraped
+*ignore*
+*docs*
+downloaded_data.csv
