@@ -21,11 +21,7 @@ def fetch_and_update():
     try:
         logging.info("Attempting to fetch CSV data from the URL.")
         # Fetch and load the CSV data into a DataFrame
-        response = requests.get(csv_url)
-        if response.status_code != 200:
-            logging.error(f"Failed to fetch CSV data. Status code: {response.status_code}")
-            return
-        df = pd.read_csv(io.StringIO(response.text), skiprows=1, low_memory=False)
+        df = fetch_csv_data(csv_url)
         logging.info("CSV data fetched successfully.")
 
         # Preprocessing steps (placeholder values replacement, data type conversion, etc.)
@@ -175,4 +171,10 @@ else:
     print(f"Failed to update records: {response.text}")
 
 # Store the current dataset for the next fetch
-df.to_csv('latest_dataset.csv', index=False)
+df.to_csv('latest_dataset.csv', index=False)def fetch_csv_data(csv_url):
+    response = requests.get(csv_url)
+    if response.status_code == 200:
+        return pd.read_csv(io.StringIO(response.text), skiprows=1, low_memory=False)
+    else:
+        logging.error(f"Failed to fetch CSV data. Status code: {response.status_code}")
+        return pd.DataFrame()
