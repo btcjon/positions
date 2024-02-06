@@ -1,0 +1,23 @@
+{"id": "flduer7oX13N1", "name": "Symbol", "type": "SingleText", "isPrimary": true, "desc": null, "editable": true, "property": {"defaultValue": ""}}
+{"id": "fld238wPPNJ5T", "name": "Type", "type": "SingleText", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null}}
+{"id": "fldUqL4quitoX", "name": "Ticket", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldlQ04SdzhXb", "name": "Lots", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldTg05TPNCZu", "name": "Buy/sell", "type": "SingleText", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null}}
+{"id": "fldmhfjiMZm19", "name": "Open price", "type": "Text", "isPrimary": false, "desc": null, "editable": true, "property": null}
+{"id": "fldhKcLpx2fxI", "name": "Close price", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldXIH6HKK1Or", "name": "Open time", "type": "DateTime", "isPrimary": false, "desc": null, "editable": true, "property": {"format": "YYYY/MM/DD HH:mm", "autoFill": false, "includeTime": true}}
+{"id": "fldN5BrMyU7Cb", "name": "Close time", "type": "DateTime", "isPrimary": false, "desc": null, "editable": true, "property": {"format": "YYYY/MM/DD HH:mm", "autoFill": false, "includeTime": true}}
+{"id": "fldWr89f19E05", "name": "Open date", "type": "DateTime", "isPrimary": false, "desc": null, "editable": true, "property": {"format": "YYYY/MM/DD", "autoFill": false, "includeTime": false}}
+{"id": "fldABGY1KLvVY", "name": "Close date", "type": "DateTime", "isPrimary": false, "desc": null, "editable": true, "property": {"format": "YYYY/MM/DD", "autoFill": false, "includeTime": false}}
+{"id": "fldgGHv8mDUvs", "name": "Profit", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldIamkgtQbK7", "name": "Swap", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldWMDgz3Y8Jc", "name": "Commission", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldtsyD0mlJP5", "name": "Net profit", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "flddOqnIZpSV1", "name": "T/P", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldkEZDQsyc1K", "name": "S/L", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldMaqO7B8CLS", "name": "Pips", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldoCfzjbbq73", "name": "Result", "type": "SingleText", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null}}
+{"id": "fldx9olfFGd93", "name": "Trade duration (hours)", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldFYo642vlid", "name": "Magic number", "type": "Number", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null, "precision": 0}}
+{"id": "fldKVRyT6J28h", "name": "Order comment", "type": "SingleText", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null}}
+{"id": "fldUK8RNwi2Y6", "name": "Account", "type": "SingleText", "isPrimary": false, "desc": null, "editable": true, "property": {"defaultValue": null}}
