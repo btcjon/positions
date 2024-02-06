@@ -30,11 +30,13 @@ def fetch_and_update():
         # Preprocessing steps (placeholder values replacement, data type conversion, etc.)
         # ...
 
+        # Initialize last_df before using it
+        last_df = pd.DataFrame()
         # Load the last fetched dataset
         try:
             last_df = pd.read_csv('latest_dataset.csv')
         except FileNotFoundError:
-            last_df = pd.DataFrame()
+            logging.info("No previous dataset found. Starting fresh.")
 
         # Check if 'Type' column exists
         if 'Type' not in df.columns:
