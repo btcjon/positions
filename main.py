@@ -17,6 +17,7 @@ logging.info("Starting the update process.")
 
 # Function to fetch and process CSV data
 def fetch_and_update():
+    logging.info("fetch_and_update job started.")
     try:
         logging.info("Attempting to fetch CSV data from the URL.")
         # Fetch and load the CSV data into a DataFrame
@@ -83,6 +84,10 @@ def fetch_and_update():
         # Store the current dataset for the next fetch
         df.to_csv('latest_dataset.csv', index=False)
         logging.info("The current dataset has been stored for the next fetch.")
+    except Exception as e:
+        logging.error(f"An error occurred: {e}")
+    finally:
+        logging.info("fetch_and_update job completed.")
     except Exception as e:
         logging.error(f"An error occurred: {e}")
 
