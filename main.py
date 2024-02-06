@@ -117,8 +117,34 @@ records_to_upload = new_or_updated_records.to_dict(orient='records')
 
 # Function to replace NaN, Infinity, and -Infinity in a dictionary
 def replace_invalid_json_values(record):
+    # Load field definitions from fields.json
+    with open('fields.json', 'r') as fields_file:
+        field_definitions = [json.loads(line) for line in fields_file.readlines()]
+
+    # Create a mapping of field names to their types
+    field_types = {field['name']: field['type'] for field in field_definitions}
+
     for key, value in record.items():
-        if isinstance(value, float) and (np.isnan(value) or np.isinf(value)):
+        # Check if the value matches the field type
+        field_type = field_types.get(key)
+        if field_type == 'Number' and isinstance(value, float):
+            if np.isnan(value) or np.isinf(value):
+                record[key] = None
+            else:
+                # Ensure the number is formatted to the correct precision
+                precision = next((field['property']['precision'] for field in field_definitions if field['name'] == key and 'precision' in field['property']), None)
+                if precision is not None:
+                    record[key] = round(value, precision)
+        elif field_type == 'DateTime' and isinstance(value, str):
+            # Parse and format the date-time string to match the expected format
+            format_str = next((field['property']['format'] for field in field_definitions if field['name'] == key and 'format' in field['property']), None)
+            if format_str:
+                try:
+                    parsed_date = datetime.strptime(value, '%Y/%m/%d %H:%M:%S')
+                    record[key] = parsed_date.strftime(format_str)
+                except ValueError:
+                    record[key] = None
+        # Add additional type checks and formatting as needed based on fields.json
             record[key] = None
     return record
 
