@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 import io
 import logging
+import time
 
 # Set up logging
 logging.basicConfig(filename='fetch_csv_log.log', level=logging.INFO, format='%(asctime)s %(message)s')
@@ -34,7 +35,10 @@ def save_csv_data(df, filename):
 # Main execution
 if __name__ == '__main__':
     logging.info("Starting CSV fetch and save process.")
+    start_time = time.time()
     df = fetch_csv_data(csv_url)
     if not df.empty:
         save_csv_data(df, 'data.csv')
+    end_time = time.time()
+    logging.info(f"CSV fetch and save process completed in {end_time - start_time:.2f} seconds.")
     logging.info("CSV fetch and save process completed.")
