@@ -1,0 +1,7 @@
+2024-02-06 18:31:19,257 Starting the update process.
+2024-02-06 18:31:19,257 Initializing the scheduler.
+2024-02-06 18:31:19,260 Scheduling the job to run every 10 minutes.
+2024-02-06 18:31:19,260 Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2024-02-06 18:31:19,260 Starting the scheduler.
+2024-02-06 18:31:19,260 Added job "fetch_and_update" to job store "default"
+2024-02-06 18:31:19,260 Scheduler started

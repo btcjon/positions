@@ -1,0 +1,5 @@
+Type,Ticket,Symbol,Lots,Buy/sell,Open price,Close price,Open time,Close time,Open date,Close date,Profit,Swap,Commission,Net profit,T/P,S/L,Pips,Result,Trade duration (hours),Magic number,Order comment,Account
+Open position,8763259,AUDNZD.PRO,0.45,Buy,1.10463,1.0678,2023/06/20 01:32:19,1970/01/01 00:00:00,2023/06/20,1970/01/01,-1013.39,-372.74,-3.15,-1389.28,0,0,-368.3,Loss,0,76,PineConnector v2.141-11834,compoundit
+Open position,8763596,AUDNZD.PRO,0.45,Buy,1.10448,1.0678,2023/06/20 03:03:50,1970/01/01 00:00:00,2023/06/20,1970/01/01,-1009.26,-372.74,-3.15,-1385.15,0,0,-366.8,Loss,0,76,PineConnector v2.141-11862,compoundit
+Open position,8763639,AUDNZD.PRO,0.45,Buy,1.10429,1.0678,2023/06/20 03:15:36,1970/01/01 00:00:00,2023/06/20,1970/01/01,-1004.04,-372.74,-3.15,-1379.93,0,0,-364.9,Loss,0,76,PineConnector v2.141-11864,compoundit
+Open position,8765347,AUDNZD.PRO,0.45,Buy,1.10313,1.0678,2023/06/20 04:32:34,1970/01/01 00:00:00,2023/06/20,1970/01/01,-972.12,-372.74,-3.15,-1348.01,0,0,-353.3,Loss,0,76,PineConnector v2.141-11906,compoundit

@@ -1,0 +1,19 @@
+id: fetch_csv_to_local
+namespace: dev
+inputs:
+  - name: csvUrl
+    type: STRING
+    required: true
+    defaults: https://www.fxblue.com/users/compoundit/csv
+tasks:
+  - id: fetch_csv
+    type: io.kestra.plugin.fs.http.Request
+    uri: "{{inputs.csvUrl}}"
+    method: GET
+  - id: save_to_local
+    type: io.kestra.core.tasks.scripts.Bash
+    commands:
+      - |
+        echo "{{task.fetch_csv.responseBody}}" > /tmp/fetched_data.csv
+    outputFiles:
+      - /tmp/fetched_data.csv

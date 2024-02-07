@@ -98,6 +98,7 @@ def fetch_and_update():
         logging.error(f"An error occurred: {e}")
     finally:
         logging.info("fetch_and_update job completed.")
+        return df  # Add this line to return the DataFrame
 
 # Initialize the scheduler
 logging.info("Initializing the scheduler.")
@@ -185,7 +186,9 @@ else:
     print(f"Failed to update records: {response.text}")
 
 # Store the current dataset for the next fetch
-df.to_csv('latest_dataset.csv', index=False)def fetch_csv_data(csv_url):
+df.to_csv('latest_dataset.csv', index=False)
+
+def fetch_csv_data(csv_url):
     response = requests.get(csv_url)
     if response.status_code == 200:
         return pd.read_csv(io.StringIO(response.text), skiprows=1, low_memory=False)
