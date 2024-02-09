@@ -1,0 +1,38 @@
+{
+    "FunctionName": "TTB2ProcessCSVAndUploadToS3",
+    "FunctionArn": "arn:aws:lambda:us-east-1:471112573781:function:ProcessCSVAndUploadToS3",
+    "Runtime": "python3.9",
+    "Role": "arn:aws:iam::471112573781:role/lambdafdasbucket",
+    "Handler": "lambda_function.lambda_handler",
+    "CodeSize": 788,
+    "Description": "",
+    "Timeout": 60,
+    "MemorySize": 128,
+    "LastModified": "2024-02-07T15:48:16.979+0000",
+    "CodeSha256": "O2Qj3bgpm0eDRjXkq0HhZFJyFUNtCkncWiCa2NKRulk=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "1c344dfe-6bdc-425d-89d6-ded0291d970b",
+    "State": "Active",
+    "LastUpdateStatus": "Successful",
+    "PackageType": "Zip",
+    "Architectures": [
+        "x86_64"
+    ],
+    "EphemeralStorage": {
+        "Size": 512
+    },
+    "SnapStart": {
+        "ApplyOn": "None",
+        "OptimizationStatus": "Off"
+    },
+    "RuntimeVersionConfig": {
+        "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:3fee14476de2c6c6b67487c8862ea51f1b5376c221844a0e7711d96cc87b3666"
+    },
+    "LoggingConfig": {
+        "LogFormat": "Text",
+        "LogGroup": "/aws/lambda/ProcessCSVAndUploadToS3"
+    }
+}
